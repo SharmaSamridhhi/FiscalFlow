@@ -1,20 +1,27 @@
 /**
- * Formats a number into a human-readable string with suffixes (e.g., 1K, 1.5M).
+ * Formats a number into Indian currency format with suffixes (e.g., ₹1L, ₹1.5Cr).
  * @param {number} num - The number to format.
- * @returns {string} - The formatted number as a string.
+ * @returns {string} - The formatted number as a string with INR symbol.
  */
 
-const formatNumber = (num) => {
-  if (num >= 1e9) {
-    return (num / 1e9).toFixed(1).replace(/\.0$/, "") + "B";
+const formatAmount = (num) => {
+  // Add INR symbol
+  const rupeeSymbol = "₹";
+
+  if (num >= 1e7) {
+    // Convert to Crores (1Cr = 10M)
+    return rupeeSymbol + num;
   }
-  if (num >= 1e6) {
-    return (num / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+  if (num >= 1e5) {
+    // Convert to Lakhs (1L = 100K)
+    return rupeeSymbol + (num / 1e5).toFixed(1).replace(/\.0$/, "") + "L";
   }
   if (num >= 1e3) {
-    return (num / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+    // Convert to Thousands
+    return rupeeSymbol + (num / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
   }
-  return num.toString();
+  // Add thousands separator for numbers below 1000
+  return rupeeSymbol + num.toLocaleString("en-IN");
 };
 
-export default formatNumber;
+export default formatAmount;

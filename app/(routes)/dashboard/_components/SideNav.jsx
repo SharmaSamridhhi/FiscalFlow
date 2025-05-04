@@ -4,7 +4,6 @@ import {
   LayoutGrid,
   PiggyBank,
   ReceiptText,
-  ShieldCheck,
   CircleDollarSign,
   TrendingUp,
   TrendingDownIcon,
@@ -50,12 +49,6 @@ function SideNav() {
     //   icon: TrendingDownIcon,
     //   path: "/dashboard/debts",
     // },
-    {
-      id: 4,
-      name: "Upgrade",
-      icon: ShieldCheck,
-      path: "/dashboard/upgrade",
-    },
   ];
   const path = usePathname();
 
