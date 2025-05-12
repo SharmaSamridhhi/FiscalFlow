@@ -22,15 +22,15 @@ function DashboardLayout({ children }) {
       .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress));
     console.log(result);
     if (result?.length == 0) {
-      router.replace("/dashboard/budgets");
+      router.replace("/dashboard/");
     }
   };
   return (
     <div>
-      <div className="fixed md:w-64 hidden md:block ">
+      <div className='fixed md:w-64 hidden md:block '>
         <SideNav />
       </div>
-      <div className="md:ml-64 ">
+      <div className='md:ml-64 '>
         <DashboardHeader />
         {children}
       </div>
